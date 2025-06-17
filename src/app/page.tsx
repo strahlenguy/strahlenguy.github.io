@@ -14,61 +14,18 @@ export default function Home() {
 
   const publications = [
     {
-      title: "Quantum Computing Applications in Cryptography: A Comprehensive Review",
-      journal: "Journal of Advanced Computing",
-      year: "2024",
-      authors: "Alberto León, et al.",
-      link: "#"
+      title: "",
+      journal: "",
+      year: "",
+      authors: "",
+      link: ""
     },
-    {
-      title: "Machine Learning Approaches to Data Privacy",
-      journal: "International Conference on AI Ethics", 
-      year: "2023",
-      authors: "Alberto León, Co-Author",
-      link: "#"
-    },
-    {
-      title: "Secure Multi-Party Computation in Distributed Systems",
-      journal: "ACM Transactions on Privacy and Security",
-      year: "2023", 
-      authors: "Alberto León, Research Team",
-      link: "#"
-    }
-  ]
-
-  const projects = [
-    {
-      title: "QuantumSecure",
-      description: "An open-source implementation of post-quantum cryptographic algorithms designed for real-world applications",
-      tech: ["Python", "C++", "Quantum Computing"],
-      github: "#",
-      demo: "#",
-      status: "Active Development"
-    },
-    {
-      title: "Neural Privacy Guard", 
-      description: "Privacy-preserving machine learning framework using differential privacy techniques",
-      tech: ["TensorFlow", "Python", "Docker"],
-      github: "#",
-      demo: "#",
-      status: "Research Phase"
-    },
-    {
-      title: "Research Data Pipeline",
-      description: "Automated data processing and analysis pipeline for academic research workflows", 
-      tech: ["Python", "Apache Airflow", "PostgreSQL"],
-      github: "#",
-      status: "In Use"
-    }
   ]
 
   const interests = [
-    "☕ Coffee brewing (V60 enthusiast)",
-    "📚 Reading sci-fi novels",
-    "🌱 Growing succulents", 
-    "🎵 Playing guitar",
-    "🥾 Weekend hiking",
-    "🧩 Solving puzzles"
+    "One Piece Card Game",
+    "Indie Game Development",
+    "Cycling",
   ]
 
   return (
@@ -79,7 +36,7 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-slate-800">Alberto León</h1>
             <nav className="hidden md:flex space-x-8">
-              {['About', 'Research', 'Projects', 'Publications', 'Contact'].map((item) => (
+              {['About', 'Research', 'Publications', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -155,14 +112,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <p className="text-slate-600 leading-relaxed">
-                I&apos;m currently pursuing my PhD in Computer Science, specializing in post-quantum 
-                cryptography and secure AI systems. My research focuses on building technologies 
-                that protect privacy while enabling groundbreaking discoveries.
+                I&apos;m currently finishing my masters in BioInformatics, specializing in small language models, autonomous agents and their
+                applications in healthcare.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 When I&apos;m not buried in research papers or coding late into the night, you can find me 
-                experimenting with different coffee brewing methods, tending to my collection of succulents, 
-                or exploring hiking trails around campus.
+                testing on card and board games or over a mountain.
               </p>
               
               <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
@@ -171,9 +126,8 @@ export default function Home() {
                   Current Status
                 </h4>
                 <p className="text-blue-700">
-                  📖 Writing my dissertation on quantum-resistant cryptographic protocols<br/>
-                  🔬 Research assistant at the Quantum Computing Lab<br/>
-                  ☕ Perfecting my morning V60 routine
+                  📖 Writing my thesis defense<br/>
+                  🔬 Building efficient agents<br/>
                 </p>
               </div>
             </div>
@@ -181,15 +135,10 @@ export default function Home() {
             <div>
               <h4 className="font-semibold text-slate-800 mb-4">Education & Background</h4>
               <div className="space-y-4 mb-8">
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h5 className="font-medium text-slate-800">PhD in Computer Science</h5>
-                  <p className="text-slate-600 text-sm">University XYZ • 2022-Present</p>
-                  <p className="text-slate-500 text-sm">Focus: Post-Quantum Cryptography</p>
-                </div>
                 <div className="border-l-4 border-green-500 pl-4">
-                  <h5 className="font-medium text-slate-800">MS in Computer Science</h5>
-                  <p className="text-slate-600 text-sm">University ABC • 2020-2022</p>
-                  <p className="text-slate-500 text-sm">Thesis: AI Security in Distributed Systems</p>
+                  <h5 className="font-medium text-slate-800">MS in Bioinformatics</h5>
+                  <p className="text-slate-600 text-sm">University of Guadalajara • 2023-2025</p>
+                  <p className="text-slate-500 text-sm">Thesis: SLM Applications in Healthcare</p>
                 </div>
               </div>
 
@@ -216,10 +165,9 @@ export default function Home() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                 <Award className="text-purple-600" size={24} />
               </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-4">Quantum Computing</h4>
+              <h4 className="text-xl font-bold text-slate-800 mb-4">Agency</h4>
               <p className="text-slate-600 leading-relaxed">
-                Developing quantum algorithms for cryptography and exploring post-quantum security 
-                protocols for the upcoming quantum era.
+                Exploring the intersection of AI and human agency, focusing on how autonomous systems can enhance decision-making.
               </p>
             </div>
 
@@ -233,63 +181,6 @@ export default function Home() {
                 for responsible AI development.
               </p>
             </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                <Coffee className="text-green-600" size={24} />
-              </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-4">Cybersecurity</h4>
-              <p className="text-slate-600 leading-relaxed">
-                Vulnerability analysis in critical systems and development of robust security 
-                protocols for distributed environments.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects" className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">Projects</h3>
-          
-          <div className="space-y-8">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-blue-200 transition-colors">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-slate-800 mb-2">{project.title}</h4>
-                    <p className="text-slate-600 leading-relaxed mb-4">{project.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech, techIndex) => (
-                        <span key={techIndex} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <div className="flex items-center space-x-4">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        project.status === 'Active Development' ? 'bg-green-100 text-green-700' :
-                        project.status === 'Research Phase' ? 'bg-yellow-100 text-yellow-700' :
-                        'bg-blue-100 text-blue-700'
-                      }`}>
-                        {project.status}
-                      </span>
-                      <a href={project.github} className="text-slate-400 hover:text-blue-600 transition-colors">
-                        <Github size={20} />
-                      </a>
-                      {project.demo && (
-                        <a href={project.demo} className="text-slate-400 hover:text-blue-600 transition-colors">
-                          <ExternalLink size={20} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -332,10 +223,10 @@ export default function Home() {
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <a href="mailto:alberto.leon@university.edu" className="bg-blue-50 p-8 rounded-xl border border-blue-100 hover:border-blue-200 transition-colors group">
+            <a href="mailto:jose.aguirre5645@alumnos.udg.mx" className="bg-blue-50 p-8 rounded-xl border border-blue-100 hover:border-blue-200 transition-colors group">
               <Mail className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors mx-auto mb-4" />
               <h4 className="font-semibold text-slate-800 mb-2">Email</h4>
-              <p className="text-slate-600 text-sm">alberto.leon@university.edu</p>
+              <p className="text-slate-600 text-sm">Academic mail</p>
             </a>
             
             <a href="#" className="bg-green-50 p-8 rounded-xl border border-green-100 hover:border-green-200 transition-colors group">
@@ -347,7 +238,7 @@ export default function Home() {
             <a href="#" className="bg-purple-50 p-8 rounded-xl border border-purple-100 hover:border-purple-200 transition-colors group">
               <Github className="w-8 h-8 text-purple-600 group-hover:text-purple-700 transition-colors mx-auto mb-4" />
               <h4 className="font-semibold text-slate-800 mb-2">GitHub</h4>
-              <p className="text-slate-600 text-sm">@alberto-leon</p>
+              <p className="text-slate-600 text-sm">@strahlenguy</p>
             </a>
           </div>
           
