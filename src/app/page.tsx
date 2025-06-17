@@ -60,12 +60,12 @@ export default function Home() {
               </h2>
               <p className="text-xl text-slate-600 mb-6 leading-relaxed">
                 I&apos;m a passionate researcher exploring the fascinating intersection of 
-                <span className="font-semibold text-blue-700"> quantum computing</span>, 
-                <span className="font-semibold text-green-700"> artificial intelligence</span>, and 
-                <span className="font-semibold text-purple-700"> cybersecurity</span>.
+                <span className="font-semibold text-blue-700"> small language models</span>, 
+                <span className="font-semibold text-green-700"> computation agency</span>, and 
+                <span className="font-semibold text-purple-700"> AI ethics</span>.
               </p>
               <p className="text-lg text-slate-500 mb-8">
-                Currently pursuing my PhD in Computer Science, dreaming of a world where technology 
+                Currently pursuing my masters in Computer Science and Bioinformatics, dreaming of a world where technology 
                 protects privacy while enabling incredible discoveries.
               </p>
               <div className="flex items-center space-x-6">
