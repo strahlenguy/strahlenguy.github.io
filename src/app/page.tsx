@@ -1,25 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronDown, ExternalLink, Github, Mail, Twitter, Linkedin, FileText, BookOpen, Award } from 'lucide-react'
+import { ExternalLink, Github, Mail, Linkedin, BookOpen, Award, Coffee, Heart, Star } from 'lucide-react'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
-  const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) return null
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setActiveSection(sectionId)
-    }
-  }
 
   const publications = [
     {
@@ -31,9 +22,16 @@ export default function Home() {
     },
     {
       title: "Machine Learning Approaches to Data Privacy",
-      journal: "International Conference on AI Ethics",
+      journal: "International Conference on AI Ethics", 
       year: "2023",
       authors: "Alberto León, Co-Author",
+      link: "#"
+    },
+    {
+      title: "Secure Multi-Party Computation in Distributed Systems",
+      journal: "ACM Transactions on Privacy and Security",
+      year: "2023", 
+      authors: "Alberto León, Research Team",
       link: "#"
     }
   ]
@@ -41,205 +39,254 @@ export default function Home() {
   const projects = [
     {
       title: "QuantumSecure",
-      description: "An open-source implementation of post-quantum cryptographic algorithms",
+      description: "An open-source implementation of post-quantum cryptographic algorithms designed for real-world applications",
       tech: ["Python", "C++", "Quantum Computing"],
       github: "#",
-      demo: "#"
+      demo: "#",
+      status: "Active Development"
     },
     {
-      title: "Neural Privacy Guard",
-      description: "Privacy-preserving machine learning framework using differential privacy",
+      title: "Neural Privacy Guard", 
+      description: "Privacy-preserving machine learning framework using differential privacy techniques",
       tech: ["TensorFlow", "Python", "Docker"],
       github: "#",
-      demo: "#"
+      demo: "#",
+      status: "Research Phase"
     },
     {
       title: "Research Data Pipeline",
-      description: "Automated data processing and analysis pipeline for academic research",
+      description: "Automated data processing and analysis pipeline for academic research workflows", 
       tech: ["Python", "Apache Airflow", "PostgreSQL"],
-      github: "#"
+      github: "#",
+      status: "In Use"
     }
   ]
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
-      {/* Animated background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-40 right-20 w-60 h-60 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
+  const interests = [
+    "☕ Coffee brewing (V60 enthusiast)",
+    "📚 Reading sci-fi novels",
+    "🌱 Growing succulents", 
+    "🎵 Playing guitar",
+    "🥾 Weekend hiking",
+    "🧩 Solving puzzles"
+  ]
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-900/50 border-b border-purple-500/20">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Header */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              ALBERTO LEÓN
-            </div>
-            <div className="hidden md:flex space-x-8">
-              {['about', 'research', 'projects', 'publications', 'contact'].map((section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-colors hover:text-purple-400 ${
-                    activeSection === section ? 'text-purple-400' : 'text-slate-300'
-                  }`}
+            <h1 className="text-2xl font-bold text-slate-800">Alberto León</h1>
+            <nav className="hidden md:flex space-x-8">
+              {['About', 'Research', 'Projects', 'Publications', 'Contact'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-slate-600 hover:text-blue-600 transition-colors font-medium"
                 >
-                  {section}
-                </button>
+                  {item}
+                </a>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-            Research in<br />
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Advanced Computing
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
-            Exploring the frontiers of quantum computing, artificial intelligence<br />
-            and cybersecurity for the future of technology
-          </p>
-          <div className="flex justify-center space-x-6 mb-12">
-            <a href="#" className="text-slate-400 hover:text-purple-400 transition-colors">
-              <Github size={24} />
-            </a>
-            <a href="#" className="text-slate-400 hover:text-purple-400 transition-colors">
-              <Twitter size={24} />
-            </a>
-            <a href="#" className="text-slate-400 hover:text-purple-400 transition-colors">
-              <Linkedin size={24} />
-            </a>
-            <a href="#" className="text-slate-400 hover:text-purple-400 transition-colors">
-              <Mail size={24} />
-            </a>
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 items-center">
+            <div className="md:col-span-2">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">
+                Hi, I&apos;m <span className="text-blue-600">Alberto</span> <span className="inline-block animate-bounce">👋</span>
+              </h2>
+              <p className="text-xl text-slate-600 mb-6 leading-relaxed">
+                I&apos;m a passionate researcher exploring the fascinating intersection of 
+                <span className="font-semibold text-blue-700"> quantum computing</span>, 
+                <span className="font-semibold text-green-700"> artificial intelligence</span>, and 
+                <span className="font-semibold text-purple-700"> cybersecurity</span>.
+              </p>
+              <p className="text-lg text-slate-500 mb-8">
+                Currently pursuing my PhD in Computer Science, dreaming of a world where technology 
+                protects privacy while enabling incredible discoveries.
+              </p>
+              <div className="flex items-center space-x-6">
+                <a 
+                  href="#contact" 
+                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
+                  Let&apos;s Connect
+                </a>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-slate-400 hover:text-blue-600 transition-colors">
+                    <Github size={24} />
+                  </a>
+                  <a href="#" className="text-slate-400 hover:text-blue-600 transition-colors">
+                    <Linkedin size={24} />
+                  </a>
+                  <a href="#" className="text-slate-400 hover:text-blue-600 transition-colors">
+                    <Mail size={24} />
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-blue-100 to-green-100 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
+                <span className="text-8xl">🧠</span>
+              </div>
+              <div className="absolute -top-4 -right-4 bg-yellow-400 rounded-full p-2 shadow-lg animate-pulse">
+                <Star size={20} className="text-white" />
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-pink-400 rounded-full p-2 shadow-lg">
+                <Heart size={20} className="text-white" />
+              </div>
+            </div>
           </div>
-          <button
-            onClick={() => scrollToSection('about')}
-            className="animate-bounce"
-          >
-            <ChevronDown size={32} className="text-purple-400" />
-          </button>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            About Me
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="w-80 h-80 mx-auto bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full backdrop-blur-sm border border-purple-500/30 flex items-center justify-center">
-                <div className="w-60 h-60 bg-gradient-to-br from-slate-800 to-slate-700 rounded-full flex items-center justify-center">
-                  <span className="text-6xl">👨‍💻</span>
-                </div>
-              </div>
-            </div>
+      <section id="about" className="py-16 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">About Me</h3>
+          
+          <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <p className="text-slate-300 text-lg leading-relaxed">
-                I&apos;m a passionate researcher exploring the frontiers of modern computing. My work focuses on 
-                the intersection of quantum computing, artificial intelligence, and cybersecurity.
+              <p className="text-slate-600 leading-relaxed">
+                I&apos;m currently pursuing my PhD in Computer Science, specializing in post-quantum 
+                cryptography and secure AI systems. My research focuses on building technologies 
+                that protect privacy while enabling groundbreaking discoveries.
               </p>
-              <p className="text-slate-300 text-lg leading-relaxed">
-                Currently pursuing a PhD in Computer Science, specializing in post-quantum cryptography 
-                and secure AI systems. My goal is to contribute to the development of technologies that 
-                protect privacy and security in the digital age.
+              <p className="text-slate-600 leading-relaxed">
+                When I&apos;m not buried in research papers or coding late into the night, you can find me 
+                experimenting with different coffee brewing methods, tending to my collection of succulents, 
+                or exploring hiking trails around campus.
               </p>
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="bg-slate-800/50 p-4 rounded-lg border border-purple-500/20">
-                  <h3 className="text-purple-400 font-semibold mb-2">Education</h3>
-                  <p className="text-slate-300 text-sm">PhD in Computer Science</p>
-                  <p className="text-slate-400 text-xs">XYZ University, 2024</p>
-                </div>
-                <div className="bg-slate-800/50 p-4 rounded-lg border border-purple-500/20">
-                  <h3 className="text-purple-400 font-semibold mb-2">Specialization</h3>
-                  <p className="text-slate-300 text-sm">Quantum Computing</p>
-                  <p className="text-slate-400 text-xs">Cryptography & AI</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Research Section */}
-      <section id="research" className="py-20 px-6 bg-slate-900/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Research Areas
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-6">
-                <Award className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-purple-400">Quantum Computing</h3>
-              <p className="text-slate-300 leading-relaxed">
-                Development of quantum algorithms for post-quantum cryptography and optimization of distributed systems.
-              </p>
-            </div>
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-6">
-                <BookOpen className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-blue-400">Secure AI</h3>
-              <p className="text-slate-300 leading-relaxed">
-                Research in differential privacy and privacy-preserving machine learning techniques.
-              </p>
-            </div>
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-              <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
-                <FileText className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-pink-400">Cybersecurity</h3>
-              <p className="text-slate-300 leading-relaxed">
-                Vulnerability analysis in critical systems and development of advanced security protocols.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Projects
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
-                <h3 className="text-xl font-bold mb-3 text-purple-400 group-hover:text-pink-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-300 mb-4 leading-relaxed">
-                  {project.description}
+              
+              <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <h4 className="font-semibold text-blue-800 mb-3 flex items-center">
+                  <Coffee className="mr-2" size={20} />
+                  Current Status
+                </h4>
+                <p className="text-blue-700">
+                  📖 Writing my dissertation on quantum-resistant cryptographic protocols<br/>
+                  🔬 Research assistant at the Quantum Computing Lab<br/>
+                  ☕ Perfecting my morning V60 routine
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, techIndex) => (
-                    <span key={techIndex} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
-                      {tech}
-                    </span>
-                  ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-slate-800 mb-4">Education & Background</h4>
+              <div className="space-y-4 mb-8">
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h5 className="font-medium text-slate-800">PhD in Computer Science</h5>
+                  <p className="text-slate-600 text-sm">University XYZ • 2022-Present</p>
+                  <p className="text-slate-500 text-sm">Focus: Post-Quantum Cryptography</p>
                 </div>
-                <div className="flex space-x-4">
-                  <a href={project.github} className="text-slate-400 hover:text-purple-400 transition-colors">
-                    <Github size={20} />
-                  </a>
-                  {project.demo && (
-                    <a href={project.demo} className="text-slate-400 hover:text-purple-400 transition-colors">
-                      <ExternalLink size={20} />
-                    </a>
-                  )}
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h5 className="font-medium text-slate-800">MS in Computer Science</h5>
+                  <p className="text-slate-600 text-sm">University ABC • 2020-2022</p>
+                  <p className="text-slate-500 text-sm">Thesis: AI Security in Distributed Systems</p>
+                </div>
+              </div>
+
+              <h4 className="font-semibold text-slate-800 mb-4">When I&apos;m Not Researching</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {interests.map((interest, index) => (
+                  <div key={index} className="text-slate-600 text-sm py-1">
+                    {interest}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Research Areas */}
+      <section id="research" className="py-16 px-6 bg-gradient-to-r from-blue-50 to-green-50">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">Research Areas</h3>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <Award className="text-purple-600" size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-800 mb-4">Quantum Computing</h4>
+              <p className="text-slate-600 leading-relaxed">
+                Developing quantum algorithms for cryptography and exploring post-quantum security 
+                protocols for the upcoming quantum era.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                <BookOpen className="text-blue-600" size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-800 mb-4">Secure AI</h4>
+              <p className="text-slate-600 leading-relaxed">
+                Research in differential privacy and privacy-preserving machine learning techniques 
+                for responsible AI development.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <Coffee className="text-green-600" size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-800 mb-4">Cybersecurity</h4>
+              <p className="text-slate-600 leading-relaxed">
+                Vulnerability analysis in critical systems and development of robust security 
+                protocols for distributed environments.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="py-16 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">Projects</h3>
+          
+          <div className="space-y-8">
+            {projects.map((project, index) => (
+              <div key={index} className="bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-blue-200 transition-colors">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                  <div className="flex-1">
+                    <h4 className="text-xl font-bold text-slate-800 mb-2">{project.title}</h4>
+                    <p className="text-slate-600 leading-relaxed mb-4">{project.description}</p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech, techIndex) => (
+                        <span key={techIndex} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center space-x-4">
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        project.status === 'Active Development' ? 'bg-green-100 text-green-700' :
+                        project.status === 'Research Phase' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-blue-100 text-blue-700'
+                      }`}>
+                        {project.status}
+                      </span>
+                      <a href={project.github} className="text-slate-400 hover:text-blue-600 transition-colors">
+                        <Github size={20} />
+                      </a>
+                      {project.demo && (
+                        <a href={project.demo} className="text-slate-400 hover:text-blue-600 transition-colors">
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -247,60 +294,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Publications Section */}
-      <section id="publications" className="py-20 px-6 bg-slate-900/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Publications
-          </h2>
+      {/* Publications */}
+      <section id="publications" className="py-16 px-6 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">Publications</h3>
+          
           <div className="space-y-6">
             {publications.map((pub, index) => (
-              <div key={index} className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-                <h3 className="text-xl font-bold mb-2 text-purple-400 hover:text-pink-400 transition-colors">
-                  <a href={pub.link} className="flex items-center space-x-2">
+              <div key={index} className="bg-white p-6 rounded-xl border border-slate-200 hover:border-blue-200 transition-colors">
+                <h4 className="text-lg font-semibold text-slate-800 mb-2">
+                  <a href={pub.link} className="hover:text-blue-600 transition-colors flex items-center space-x-2">
                     <span>{pub.title}</span>
                     <ExternalLink size={16} />
                   </a>
-                </h3>
-                <p className="text-slate-300 mb-2">{pub.authors}</p>
-                <p className="text-slate-400 text-sm">{pub.journal} • {pub.year}</p>
+                </h4>
+                <p className="text-slate-600 mb-1">{pub.authors}</p>
+                <p className="text-slate-500 text-sm">{pub.journal} • {pub.year}</p>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-slate-500 text-sm">
+              📚 More publications coming soon! Currently working on several exciting papers.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      {/* Contact */}
+      <section id="contact" className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Contact
-          </h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Interested in collaborating or discussing research ideas?
+          <h3 className="text-3xl font-bold text-slate-800 mb-6">Let&apos;s Connect</h3>
+          <p className="text-xl text-slate-600 mb-12">
+            Interested in collaborating or just want to chat about research? <br/>
+            I&apos;d love to hear from you! ☕
           </p>
+          
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <a href="mailto:alberto.leon@university.edu" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
-              <Mail className="w-8 h-8 text-purple-400 group-hover:text-pink-400 transition-colors mx-auto mb-4" />
-              <h3 className="font-semibold text-purple-400 mb-2">Email</h3>
-              <p className="text-slate-300 text-sm">alberto.leon@university.edu</p>
+            <a href="mailto:alberto.leon@university.edu" className="bg-blue-50 p-8 rounded-xl border border-blue-100 hover:border-blue-200 transition-colors group">
+              <Mail className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors mx-auto mb-4" />
+              <h4 className="font-semibold text-slate-800 mb-2">Email</h4>
+              <p className="text-slate-600 text-sm">alberto.leon@university.edu</p>
             </a>
-            <a href="#" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
-              <Linkedin className="w-8 h-8 text-purple-400 group-hover:text-pink-400 transition-colors mx-auto mb-4" />
-              <h3 className="font-semibold text-purple-400 mb-2">LinkedIn</h3>
-              <p className="text-slate-300 text-sm">@alberto-leon</p>
+            
+            <a href="#" className="bg-green-50 p-8 rounded-xl border border-green-100 hover:border-green-200 transition-colors group">
+              <Linkedin className="w-8 h-8 text-green-600 group-hover:text-green-700 transition-colors mx-auto mb-4" />
+              <h4 className="font-semibold text-slate-800 mb-2">LinkedIn</h4>
+              <p className="text-slate-600 text-sm">@alberto-leon</p>
             </a>
-            <a href="#" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
-              <Github className="w-8 h-8 text-purple-400 group-hover:text-pink-400 transition-colors mx-auto mb-4" />
-              <h3 className="font-semibold text-purple-400 mb-2">GitHub</h3>
-              <p className="text-slate-300 text-sm">@alberto-leon</p>
+            
+            <a href="#" className="bg-purple-50 p-8 rounded-xl border border-purple-100 hover:border-purple-200 transition-colors group">
+              <Github className="w-8 h-8 text-purple-600 group-hover:text-purple-700 transition-colors mx-auto mb-4" />
+              <h4 className="font-semibold text-slate-800 mb-2">GitHub</h4>
+              <p className="text-slate-600 text-sm">@alberto-leon</p>
             </a>
           </div>
-          <p className="text-slate-400">
-            © 2024 Alberto León. Built with Next.js and love for research.
-          </p>
+          
+          <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-100 inline-block">
+            <p className="text-slate-600">
+              <span className="font-medium">Fun fact:</span> I&apos;m always up for discussing research over a good cup of coffee! ☕
+            </p>
+          </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 bg-slate-100 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-slate-500 text-sm">
+            © 2024 Alberto León • Built with Next.js and lots of ☕ • Made with <Heart size={14} className="inline text-red-500" /> for research
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }
