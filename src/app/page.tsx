@@ -146,7 +146,7 @@ export default function Home() {
             </div>
             <div className="space-y-6">
               <p className="text-slate-300 text-lg leading-relaxed">
-                I'm a passionate researcher exploring the frontiers of modern computing. My work focuses on 
+                I&apos;m a passionate researcher exploring the frontiers of modern computing. My work focuses on 
                 the intersection of quantum computing, artificial intelligence, and cybersecurity.
               </p>
               <p className="text-slate-300 text-lg leading-relaxed">
@@ -274,30 +274,30 @@ export default function Home() {
       <section id="contact" className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Contacto
+            Contact
           </h2>
           <p className="text-xl text-slate-300 mb-8">
-            ¿Interesado en colaborar o discutir ideas de investigación?
+            Interested in collaborating or discussing research ideas?
           </p>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <a href="mailto:tu-email@universidad.edu" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
+            <a href="mailto:alberto.leon@university.edu" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
               <Mail className="w-8 h-8 text-purple-400 group-hover:text-pink-400 transition-colors mx-auto mb-4" />
               <h3 className="font-semibold text-purple-400 mb-2">Email</h3>
-              <p className="text-slate-300 text-sm">tu-email@universidad.edu</p>
+              <p className="text-slate-300 text-sm">alberto.leon@university.edu</p>
             </a>
             <a href="#" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
               <Linkedin className="w-8 h-8 text-purple-400 group-hover:text-pink-400 transition-colors mx-auto mb-4" />
               <h3 className="font-semibold text-purple-400 mb-2">LinkedIn</h3>
-              <p className="text-slate-300 text-sm">@tu-perfil</p>
+              <p className="text-slate-300 text-sm">@alberto-leon</p>
             </a>
             <a href="#" className="bg-slate-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
               <Github className="w-8 h-8 text-purple-400 group-hover:text-pink-400 transition-colors mx-auto mb-4" />
               <h3 className="font-semibold text-purple-400 mb-2">GitHub</h3>
-              <p className="text-slate-300 text-sm">@tu-usuario</p>
+              <p className="text-slate-300 text-sm">@alberto-leon</p>
             </a>
           </div>
           <p className="text-slate-400">
-            © 2024 Tu Nombre. Construido con Next.js y amor por la investigación.
+            © 2024 Alberto León. Built with Next.js and love for research.
           </p>
         </div>
       </section>
