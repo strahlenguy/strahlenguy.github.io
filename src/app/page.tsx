@@ -23,9 +23,9 @@ export default function Home() {
   ]
 
   const interests = [
-    "One Piece Card Game",
-    "Indie Game Development",
-    "Cycling",
+    "🃟 One Piece Card Game",
+    "🎮 Indie Game Development",
+    "🚴 Cycling",
   ]
 
   return (
