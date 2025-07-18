@@ -189,7 +189,7 @@ export default function Home() {
       <section id="publications" className="py-16 px-6 bg-slate-50">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">Publications</h3>
-          
+{/*           
           <div className="space-y-6">
             {publications.map((pub, index) => (
               <div key={index} className="bg-white p-6 rounded-xl border border-slate-200 hover:border-blue-200 transition-colors">
@@ -203,7 +203,7 @@ export default function Home() {
                 <p className="text-slate-500 text-sm">{pub.journal} • {pub.year}</p>
               </div>
             ))}
-          </div>
+          </div> */}
           
           <div className="mt-8 text-center">
             <p className="text-slate-500 text-sm">
