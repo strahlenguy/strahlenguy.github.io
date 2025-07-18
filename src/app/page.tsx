@@ -213,43 +213,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-slate-800 mb-6">Let&apos;s Connect</h3>
-          <p className="text-xl text-slate-600 mb-12">
-            Interested in collaborating or just want to chat about research? <br/>
-            I&apos;d love to hear from you! ☕
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <a href="mailto:jose.aguirre5645@alumnos.udg.mx" className="bg-blue-50 p-8 rounded-xl border border-blue-100 hover:border-blue-200 transition-colors group">
-              <Mail className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors mx-auto mb-4" />
-              <h4 className="font-semibold text-slate-800 mb-2">Email</h4>
-              <p className="text-slate-600 text-sm">Academic mail</p>
-            </a>
-            
-            <a href="#" className="bg-green-50 p-8 rounded-xl border border-green-100 hover:border-green-200 transition-colors group">
-              <Linkedin className="w-8 h-8 text-green-600 group-hover:text-green-700 transition-colors mx-auto mb-4" />
-              <h4 className="font-semibold text-slate-800 mb-2">LinkedIn</h4>
-              <p className="text-slate-600 text-sm">@alberto-leon</p>
-            </a>
-            
-            <a href="#" className="bg-purple-50 p-8 rounded-xl border border-purple-100 hover:border-purple-200 transition-colors group">
-              <Github className="w-8 h-8 text-purple-600 group-hover:text-purple-700 transition-colors mx-auto mb-4" />
-              <h4 className="font-semibold text-slate-800 mb-2">GitHub</h4>
-              <p className="text-slate-600 text-sm">@strahlenguy</p>
-            </a>
-          </div>
-          
-          <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-100 inline-block">
-            <p className="text-slate-600">
-              <span className="font-medium">Fun fact:</span> I&apos;m always up for discussing research over a good cup of coffee! ☕
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-8 px-6 bg-slate-100 border-t border-slate-200">
         <div className="max-w-4xl mx-auto text-center">
