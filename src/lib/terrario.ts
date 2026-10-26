@@ -1,6 +1,6 @@
-// Terrario: agentes con energía que se agota, tres sectores sensoriales y una red
-// pequeña (5→4→2) cuyos pesos evolucionan. Aptitud = tiempo vivo: cuando un agente
-// muere, lo reemplaza un hijo mutado del mejor de un torneo entre los vivos.
+// Terrarium: agents with draining energy, three sensory sectors and a small
+// network (5→4→2) whose weights evolve. Fitness = time alive: when an agent dies,
+// it is replaced by a mutated child of the winner of a tournament among the living.
 
 export type TerrarioEls = {
   hero: HTMLElement
@@ -36,7 +36,7 @@ const NH = 4
 const NO = 2
 const GL = NI * NH + NH * NO + NO
 const R = 95 // alcance sensorial
-const S = 4 // tamaño del pixel
+const S = 4 // pixel size
 const N_AGENTS = 12
 const MAX_FOOD = 55
 
@@ -49,7 +49,7 @@ const gauss = () => {
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v)
 }
 const snap = (v: number) => Math.round(v / S) * S
-const fmt = (n: number) => n.toLocaleString('es-MX')
+const fmt = (n: number) => n.toLocaleString('en-US')
 
 export function startTerrario(els: TerrarioEls): () => void {
   const root = document.documentElement
@@ -178,9 +178,9 @@ export function startTerrario(els: TerrarioEls): () => void {
   }
 
   const showDead = (a: Agent) => {
-    els.title.textContent = `agente #${a.id} †`
+    els.title.textContent = `agent #${a.id} †`
     els.bar.style.width = '0%'
-    els.meta.textContent = `murió a los ${fmt(a.age)} t. Elige otro.`
+    els.meta.textContent = `died at ${fmt(a.age)} t. Pick another.`
   }
 
   const step = () => {
@@ -292,7 +292,7 @@ export function startTerrario(els: TerrarioEls): () => void {
     els.best.textContent = fmt(best)
   }
 
-  const LABELS = [['izq', 'cen', 'der', 'energía', 'sesgo'], ['', '', '', ''], ['giro', 'vel']]
+  const LABELS = [['left', 'center', 'right', 'energy', 'bias'], ['', '', '', ''], ['turn', 'speed']]
   const drawNet = () => {
     if (!sel) return
     const r = els.net.getBoundingClientRect()
@@ -347,9 +347,9 @@ export function startTerrario(els: TerrarioEls): () => void {
 
   const updateCard = () => {
     if (!sel) return
-    els.title.textContent = `agente #${sel.id}`
+    els.title.textContent = `agent #${sel.id}`
     els.bar.style.width = `${Math.max(0, sel.e * 100).toFixed(0)}%`
-    els.meta.textContent = `gen ${sel.gen} · vivo hace ${fmt(sel.age)} t`
+    els.meta.textContent = `gen ${sel.gen} · alive for ${fmt(sel.age)} t`
     drawNet()
   }
 
@@ -389,7 +389,7 @@ export function startTerrario(els: TerrarioEls): () => void {
   readColors()
   resize()
   init()
-  // Precalienta para que el primer cuadro ya tenga rastros y alguna generación.
+  // Warm up so the first frame already shows trails and a few generations.
   for (let i = 0; i < 900; i++) {
     step()
     if (i % 3 === 0) draw()
@@ -398,7 +398,7 @@ export function startTerrario(els: TerrarioEls): () => void {
   hud()
 
   if (matchMedia('(hover: none)').matches) {
-    els.hint.textContent = 'toca: deja comida · toca un agente: ve su red'
+    els.hint.textContent = 'tap: drop food · tap an agent: see its network'
   }
 
   els.canvas.addEventListener('pointerdown', onPointer)

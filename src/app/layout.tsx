@@ -4,7 +4,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Alberto León',
   description:
-    'Beto (Alberto León): doctorando en la UdeG. Estudio cómo emerge la agencia homeostática en redes neuronales evolucionadas.',
+    'Beto (Alberto León), PhD student at the University of Guadalajara studying how agency emerges in small evolved neural networks.',
 }
 
 export const viewport: Viewport = {
@@ -14,12 +14,12 @@ export const viewport: Viewport = {
   ],
 }
 
-// Aplica el tema guardado antes del primer pintado para evitar el parpadeo.
+// Apply the saved theme before first paint to avoid a flash.
 const themeInit = `try{var t=localStorage.getItem('beto-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

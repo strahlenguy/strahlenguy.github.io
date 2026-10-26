@@ -38,10 +38,10 @@ export default function ThemeToggle() {
       type="button"
       className="theme"
       onClick={toggle}
-      aria-label={dark ? 'Cambiar a tema de día' : 'Cambiar a tema de noche'}
+      aria-label={dark ? 'Switch to day theme' : 'Switch to night theme'}
     >
       <i />
-      <span>{dark === null ? ' ' : dark ? 'día' : 'noche'}</span>
+      <span>{dark === null ? ' ' : dark ? 'day' : 'night'}</span>
     </button>
   )
 }

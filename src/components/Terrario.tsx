@@ -39,35 +39,35 @@ export default function Terrario({ children }: { children: React.ReactNode }) {
       <canvas
         id="sim"
         ref={canvas}
-        aria-label="Simulación: agentes que buscan comida para mantenerse con energía. Haz click para dejar comida o sobre un agente para ver su red."
+        aria-label="Simulation: agents forage to keep their energy up. Click to drop food, or click an agent to see its network."
       />
       <div className="hud">
         gen <span ref={gen}>0</span>
         <br />
-        vivos <span ref={alive}>0</span>
+        alive <span ref={alive}>0</span>
         <br />
-        récord <span ref={best}>0</span> t
+        best <span ref={best}>0</span> t
       </div>
 
       <div className="agent" ref={card} hidden>
         <h3>
-          <span ref={title}>agente</span>
-          <button type="button" ref={close} aria-label="Cerrar ficha">
+          <span ref={title}>agent</span>
+          <button type="button" ref={close} aria-label="Close">
             ×
           </button>
         </h3>
-        <div className="lab">interocepción · energía</div>
+        <div className="lab">interoception · energy</div>
         <div className="bar">
           <i ref={bar} />
         </div>
         <div className="lab" ref={meta} />
-        <canvas className="net" ref={net} aria-label="Red neuronal del agente" />
+        <canvas className="net" ref={net} aria-label="Agent neural network" />
       </div>
 
       {children}
 
       <div className="hint" ref={hint}>
-        click: deja comida · click en un agente: ve su red
+        click: drop food · click an agent: see its network
       </div>
     </header>
   )
