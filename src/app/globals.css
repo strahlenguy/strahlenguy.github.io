@@ -1,26 +1,292 @@
-@import "tailwindcss";
-
+/* Cuaderno cuadriculado: texto en negro sobre papel gris claro (día) o casi negro (noche).
+   El color (azul y rojo) vive solo en el terrario. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #eeeeec;
+  --grid: #e2e2df;
+  --ink: #141414;
+  --ink-soft: #6e6e6e;
+  --card: #f9f9f7;
+  --agent: #1f3c9e; /* azul: agentes */
+  --food: #d0232f; /* rojo: comida */
+  --tape-a: rgba(20, 20, 20, 0.11);
+  --tape-b: rgba(20, 20, 20, 0.05);
+  --f-display: 'Shippori Mincho', 'Hiragino Mincho ProN', Georgia, serif;
+  --f-body: 'Zen Kaku Gothic New', 'Hiragino Sans', system-ui, sans-serif;
+  --f-mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  color-scheme: light;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme='light']) {
+    --paper: #111214;
+    --grid: #1c1e21;
+    --ink: #ebebe7;
+    --ink-soft: #9a9a95;
+    --card: #18191c;
+    --agent: #7f9bff;
+    --food: #ff5c63;
+    --tape-a: rgba(255, 255, 255, 0.12);
+    --tape-b: rgba(255, 255, 255, 0.05);
+    color-scheme: dark;
   }
 }
+:root[data-theme='dark'] {
+  --paper: #111214;
+  --grid: #1c1e21;
+  --ink: #ebebe7;
+  --ink-soft: #9a9a95;
+  --card: #18191c;
+  --agent: #7f9bff;
+  --food: #ff5c63;
+  --tape-a: rgba(255, 255, 255, 0.12);
+  --tape-b: rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.65;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration-color: var(--ink-soft);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+a:hover {
+  text-decoration-color: var(--ink);
+}
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* barra superior */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 16px 10px;
+}
+nav .name {
+  font-family: var(--f-mono);
+  font-size: 13px;
+}
+.theme {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  background: none;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 4px 12px 4px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 78px;
+}
+.theme i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: linear-gradient(90deg, var(--ink) 50%, transparent 50%);
+}
+
+/* terrario */
+.hero {
+  position: relative;
+  border-top: 1px solid var(--ink);
+  min-height: calc(100vh - 62px);
+  min-height: calc(100dvh - 62px);
+  padding-block: 260px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+#sim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+.hud {
+  position: absolute;
+  top: 14px;
+  right: 0;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  text-align: right;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+.hud span {
+  color: var(--agent);
+}
+.intro {
+  position: relative;
+  max-width: 560px;
+  pointer-events: none;
+}
+.intro a {
+  pointer-events: auto;
+}
+.intro p {
+  margin: 0 0 8px;
+}
+.intro p > span {
+  background: color-mix(in srgb, var(--paper) 80%, transparent);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 1px 3px;
+}
+.verse {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(22px, 3.4vw, 30px);
+  line-height: 1.35;
+  margin: 0 0 18px !important;
+  text-wrap: balance;
+}
+.verse .cur {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.95em;
+  background: var(--ink);
+  vertical-align: -0.1em;
+  margin-left: 4px;
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.intro .hi {
+  font-weight: 700;
+  font-size: 17px;
+}
+.intro .links {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  margin-top: 14px;
+}
+.hint {
+  position: absolute;
+  right: 0;
+  bottom: 14px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  pointer-events: none;
+}
+
+/* ficha del agente */
+.agent {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  width: 250px;
+  max-width: calc(100% - 120px);
+  background: var(--card);
+  border: 1px solid var(--ink);
+  padding: 12px 12px 10px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  z-index: 2;
+}
+.agent::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 30%;
+  width: 70px;
+  height: 18px;
+  background: repeating-linear-gradient(45deg, var(--tape-a) 0 6px, var(--tape-b) 6px 12px);
+  transform: rotate(-3deg);
+}
+.agent h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+.agent h3 button {
+  background: none;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  padding: 0 2px;
+}
+.bar {
+  height: 8px;
+  border: 1px solid var(--ink);
+  margin: 4px 0 8px;
+  position: relative;
+}
+.bar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--agent);
+}
+.net {
+  display: block;
+  width: 100%;
+  height: 150px;
+}
+.lab {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-block: 300px 34px;
+  }
+  .hint {
+    bottom: auto;
+    top: 250px;
+    left: 0;
+    right: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .verse .cur {
+    animation: none;
+  }
 }
